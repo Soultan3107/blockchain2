@@ -1,0 +1,56 @@
+<mat-card class="card">
+  <h1 style="text-align: center;">Add Verified Employer</h1>
+  <br />
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Job Provider Name</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="ex: Abc"
+        name="name"
+        formControlName="name"
+      />
+      <mat-error *ngIf="form.get('name').hasError('minlength')"
+        >Please Enter 2+ characters</mat-error
+      >
+      <mat-error *ngIf="form.get('name').hasError('required')"
+        >Please Enter Job Provider Name</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input
+        matInput
+        placeholder="ex: 0x0000000000000000000000000000000000000000"
+        name="address"
+        formControlName="address"
+      />
+      <mat-error *ngIf="form.get('address').hasError('required')"
+        >Please Enter Address</mat-error
+      >
+      <mat-error *ngIf="form.get('address').hasError('minlength')"
+        >Please Enter Valid Address</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <br />
+    <button mat-raised-button color="accent" type="submit">SAVE</button>
+  </form>
+</mat-card>
+
+<h1 style="text-align: center; margin: 1rem; margin-top: 2rem;">
+  Verified Employers List
+</h1>
+<br />
+<mat-card class="card" *ngFor="let emps of vEmployers | async">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>Name : {{ emps.name }}</mat-card-title>
+    <mat-card-subtitle>ID No. : {{ emps.id }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p style="margin-top: 1rem;">Address : {{ emps.address }}</p>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,21 @@
+<mat-toolbar class="nav">
+  <span>
+    <a routerLink="/" class="brand">CIEG - WorkDApp</a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    <li>
+      <mat-chip-list>
+        <mat-chip>{{ currentUser }}</mat-chip>
+      </mat-chip-list>
+    </li>
+    <li>
+      <a mat-button routerLink="/admin" routerLinkActive="mat-accent">Admin</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/employer" routerLinkActive="mat-accent"
+        >Add Job</a
+      >
+    </li>
+  </ul>
+</mat-toolbar>
